@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffeeapi
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: coffeeapi
+  template:
+    metadata:
+      labels:
+        run: coffeeapi
+    spec:
+      containers:
+      - image: gcr.io/digisense-293411/coffeeapi
+        imagePullPolicy: IfNotPresent
+        name: coffeeapi
+        ports:
+        - containerPort: 8080
+          protocol: TCP

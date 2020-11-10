@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teaapi-svc
+spec:
+  selector:
+    app: teaapi
+  type: NodePort
+  ports:
+  - port: 8001 
+    targetPort: 8080 
+    protocol: TCP
