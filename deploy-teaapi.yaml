@@ -2,20 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: teaapi
-  namespace: default
+  labels:
+    app: teaapi
 spec:
   selector:
     matchLabels:
-      run: teaapi
+      app: teaapi
+  replicas: 1
   template:
     metadata:
       labels:
-        run: teaapi
+        app: teaapi
     spec:
       containers:
       - image: gcr.io/digisense-293411/teaapi
-        imagePullPolicy: IfNotPresent
         name: teaapi
         ports:
         - containerPort: 80
-          protocol: TCP
+      restartPolicy: Always
