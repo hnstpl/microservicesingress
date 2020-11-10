@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-microservices
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /*
+          backend:
+            serviceName: coffeeapi-svc
+            servicePort: 8001
+        - path: /teaapi/*
+          backend:
+            serviceName: teaapi-svc
+            servicePort: 8001
